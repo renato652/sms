@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disparos de SMS - Atraia Clientes para o seu WhatsApp</title>
+    
+    <style>
+        /* CONFIGURAÇÕES GERAIS DA PÁGINA */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* LIMITADOR DE LARGURA DO CONTEÚDO */
+        .conteiner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* TOPO DA PÁGINA (HERO) */
+        .cabecalho-principal {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .titulo-principal {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .destaque-verde {
+            color: #10b981; /* Cor verde para destacar o WhatsApp */
+        }
+
+        .subtitulo-principal {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* BOTÃO DE CHAMADA PARA AÇÃO */
+        .botao-whatsapp {
+            display: inline-block;
+            background-color: #10b981;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 18px 36px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .botao-whatsapp:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        /* SEÇÃO DE BENEFÍCIOS (VANTAGENS) */
+        .secao-beneficios {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .titulo-secao {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #0f172a;
+        }
+
+        .grade-beneficios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .cartao-beneficio {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .titulo-beneficio {
+            font-size: 1.3rem;
+            color: #1e1b4b;
+            margin-bottom: 12px;
+        }
+
+        .texto-beneficio {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* SEÇÃO DE PREÇOS E PLANOS */
+        .secao-precos {
+            background-color: #e2e8f0;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .grade-precos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .caixa-preco {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* PLANO MAIS VENDIDO (COM DESTAQUE) */
+        .caixa-preco.destacado {
+            border-color: #4f46e5;
+            transform: scale(1.03);
+            position: relative;
+        }
+
+        .etiqueta-destaque {
+            background-color: #4f46e5;
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-transform: uppercase;
+        }
+
+        .nome-plano {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #334155;
+        }
+
+        .quantidade-sms {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            margin: 20px 0;
+        }
+
+        .lista-recursos {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .lista-recursos li {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        /* Variante menor do botão para os cards */
+        .botao-comprar {
+            display: block;
+            background-color: #1e293b;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .botao-comprar:hover {
+            background-color: #0f172a;
+        }
+
+        .botao-comprar.verde {
+            background-color: #4f46e5;
+        }
+
+        .botao-comprar.verde:hover {
+            background-color: #4338ca;
+        }
+
+        /* RODAPÉ DA PÁGINA */
+        .rodape-pagina {
+            background-color: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVIDADE PARA CELULARES */
+        @media (max-width: 768px) {
+            .titulo-principal {
+                font-size: 2rem;
+            }
+            .caixa-preco.destacado {
+                transform: scale(1);
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO / HERO -->
+    <header class="cabecalho-principal">
+        <div class="conteiner">
+            <h1 class="titulo-principal">
+                Dispare SMS em Massa e Encha seu <span class="destaque-verde">WhatsApp</span> de Clientes
+            </h1>
+            <p class="subtitulo-principal">
+                Entregue ofertas direto na tela de bloqueio do celular com mais de 98% de taxa de abertura. Escalável, rápido e direto.
+            </p>
+            <a href="https://wa.me/5511974914955?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20os%20disparos%20de%20SMS%20em%20massa." class="botao-whatsapp" target="_blank">
+                Chamar no WhatsApp Comercial
+            </a>
+        </div>
+    </header>
+
+    <!-- SEÇÃO DE BENEFÍCIOS -->
+    <section class="secao-beneficios">
+        <div class="conteiner">
+            <h2 class="titulo-secao">Por que usar nossa plataforma?</h2>
+            
+            <div class="grade-beneficios">
+                <div class="cartao-beneficio">
+                    <h3 class="titulo-beneficio">Abertura Imediata</h3>
+                    <p class="texto-beneficio">Quase todas as mensagens de SMS são lidas pelos usuários nos primeiros 3 minutos após a entrega.</p>
+                </div>
+
+                <div class="cartao-beneficio">
+                    <h3 class="titulo-beneficio">Tráfego de Entrada</h3>
+                    <p class="texto-beneficio">O cliente clica no link do SMS e vai direto falar com você. Sem risco de banimento no seu WhatsApp.</p>
+                </div>
+
+                <div class="cartao-beneficio">
+                    <h3 class="titulo-beneficio">Fácil Importação</h3>
+                    <p class="texto-beneficio">Basta subir a sua lista de contatos em formato Excel ou CSV e iniciar a sua campanha promocional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PREÇOS -->
+    <section class="secao-precos">
+        <div class="conteiner">
+            <h2 class="titulo-secao">Escolha o seu Pacote de Envio</h2>
+            
+            <div class="grade-precos">
+                <!-- Plano Básico -->
+                <div class="caixa-preco">
+                    <div>
+                        <div class="nome-plano">Plano Inicial</div>
+                        <div class="quantidade-sms">5.000 SMS</div>
+                        <ul class="lista-recursos">
+                            <li>✓ Relatório de entregas</li>
+                            <li>✓ Validador de números</li>
+                            <li>✓ Suporte via ticket</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5511974914955?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20o%20Plano%20Inicial%20de%205.000%20SMS." class="botao-comprar" target="_blank">Escolher Plano</a>
+                </div>
+
+                <!-- Plano Destacado -->
+                <div class="caixa-preco destacado">
+                    <div class="etiqueta-destaque">Mais Vendido</div>
+                    <div>
+                        <div class="nome-plano">Plano Alvo</div>
+                        <div class="quantidade-sms">25.000 SMS</div>
+                        <ul class="lista-recursos">
+                            <li>✓ Encurtador de link integrado</li>
+                            <li>✓ Relatórios detalhados em tempo real</li>
+                            <li>✓ Suporte prioritário individual</li>
+                            <li>✓ Rotas estáveis de alta velocidade</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5511974914955?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20o%20Plano%20Alvo%20de%2025.000%20SMS." class="botao-comprar verde" target="_blank">Escolher Plano</a>
+                </div>
+
+                <!-- Plano Corporativo -->
+                <div class="caixa-preco">
+                    <div>
+                        <div class="nome-plano">Plano Avançado</div>
+                        <div class="quantidade-sms">100.000 SMS</div>
+                        <ul class="lista-recursos">
+                            <li>✓ Acesso completo à nossa API REST</li>
+                            <li>✓ Rotas dedicadas exclusivas</li>
+                            <li>✓ Gerente de conta individual</li>
+                            <li>✓ Suporte emergencial 24 horas</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/5511974914955?text=Ol%C3%A1%21%20Gostaria%20de%20contratar%20o%20Plano%20Avan%C3%A7ado%20de%20100.000%20SMS." class="botao-comprar" target="_blank">Escolher Plano</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape-pagina">
+        <div class="conteiner">
+            <p>&copy; 2026 Sistema de Disparos SMS. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; font-size: 0.75rem; color: #64748b;">Atenção: Garanta que suas listas estejam em conformidade com as regras locais de privacidade de dados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
